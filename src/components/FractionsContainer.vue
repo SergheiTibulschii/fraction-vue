@@ -120,12 +120,6 @@ export default {
 }
 
 #add-fraction {
-    display: block;
     padding: 15px 25px;
-    border: 1px solid green;
-    border-radius: 5px;
-    outline: none;
-    cursor: pointer;
-    background: transparent;
 }
 </style>

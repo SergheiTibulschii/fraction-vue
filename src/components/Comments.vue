@@ -1,9 +1,9 @@
 <template>
     <div id='comments-container'>
         <error :message='error'/>
-        <div style='display: flex'>
+        <div id='add-comment-container'>
             <input v-model='newComment' placeholder='Add a comment' id='add-comment-text' type='text'/>
-            <button @click='requestAddComment' id='add-new-comment-btn'>Add Comment</button>
+            <button @click='requestAddComment' id='add-comment-btn'>Add Comment</button>
         </div>
         <ul>
             <li v-bind:key='comment' v-for='(comment, index) in comments'>
@@ -90,21 +90,17 @@ ul {
 }
 
 input {
-    border: 1px solid gray;
-    border-radius: 5px;
     font-size: 1.1em;
 }
-
-#add-comment-text {
-    padding: 0 5px;
+#add-comment-container {
+    display: flex;
 }
-
-#add-new-comment-btn {
-    display: inline-block;
-    border: 1px solid green;
-    border-radius: 5px;
-    outline: none;
-    cursor: pointer;
-    background: transparent;
+#add-comment-btn {
+    padding: 5px 10px;
+}
+#add-comment-text{
+    font-size: 1em;
+    padding: 5px 10px;
+    margin-right: 5px;
 }
 </style>

@@ -38,10 +38,11 @@ a {
 }
 
 input {
+  border: 1px solid gray;
+    border-radius: 5px;
     padding: 0;
     margin:0;
     display: block;
-    width: 100%;
     outline: none;
 }
 </style>

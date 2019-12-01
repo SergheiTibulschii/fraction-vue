@@ -22,6 +22,7 @@ export default {
     overflow: hidden;
     margin: 2px;
     display: flex;
+    justify-content: center;
 }
 .disabled {
     width: 100%;
