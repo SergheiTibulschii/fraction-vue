@@ -1,5 +1,12 @@
 <template>
-    <input v-bind:class="classes" type='text' maxlength="1" v-on:input='$event => handleSignChange($event, index)' :value='value' :disabled='isDisabled'/>
+    <input 
+        v-bind:class="classes" 
+        type='text'
+        @input='$event => handleSignChange($event, index)' 
+        :value='value' 
+        :disabled='isDisabled'
+        maxlength="2"
+    />
 </template>
 
 <script>
@@ -8,14 +15,16 @@ import fractionPart from './FractionPart'
 export default {
     name: 'Sign',
     props: [
-     'isDisabled', 'value', 'index'
+     'isDisabled', 'value', 'index', 'pattern'
     ],
-    data() {
-        return {}
-    },
     methods: {
         handleSignChange(evt, index) {
             const { data } = evt
+            evt.target.value = data;
+            if(!this.pattern.includes(data)) {
+                this.$emit('signError', `Please use one of the specified signs ${this.pattern.join(',')}`)
+                return
+            }
             this.$emit('changeSign', {value: data, index})
             if(data) this.$emit('calculate')
         }
@@ -27,6 +36,9 @@ export default {
             disabled: this.isDisabled
          })
         }
+    },
+    beforeMount() {
+        this.$emit('registerSign', this.index)
     }
 }
 </script>
@@ -42,8 +54,13 @@ export default {
 }
 .disabled {
     border: none;
+    background: transparent;
 }
 .error {
     border: 1px solid red;
+}
+input {
+        border: none;
+    text-align: center;
 }
 </style>

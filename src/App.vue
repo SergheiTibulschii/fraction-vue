@@ -1,34 +1,47 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <headerMenu />
+    <div id='#content'>
+      <router-view/>
+    </div>
   </div>
 </template>
 
 <script>
+import headerMenu from './HeaderMenu'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    headerMenu
+  }
 }
 </script>
 
 <style>
+*:disabled {
+  background: transparent;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#content {
+  flex-grow: 1;
+}
+
+a { 
+  text-decoration: none;
 }
 
 input {
     padding: 0;
     margin:0;
-    height: 100%;
     display: block;
     width: 100%;
-    border: none;
     outline: none;
-    text-align: center;
 }
 </style>

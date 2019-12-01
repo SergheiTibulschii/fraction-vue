@@ -1,7 +1,7 @@
 <template>
     <div :class='classes'>
         <fractionPart :value='num' :onChange='handleNumChange' :isDisabled='isDisabled'/>
-        <fractionPart :value='denom' :onChange='handleDenomChange' :isDisabled='isDisabled'/>
+        <fractionPart v-if='num !== 0' :value='denom' :onChange='handleDenomChange' :isDisabled='isDisabled'/>
     </div>
 </template>
 
@@ -36,7 +36,8 @@ export default {
     computed: {
         classes() {
          return {
-             fraction: true
+             fraction: true,
+             nullable: this.num === 0
             }
         }
     }
@@ -48,5 +49,12 @@ export default {
     display: flex;
     flex-direction: column;
     padding: 5px;
+}
+.nullable {
+    justify-content: center;
+}
+.result {
+    display: flex;
+    flex-direction: column;
 }
 </style>

@@ -10,6 +10,11 @@ export default new Router({
       path: '/',
       name: 'FractionsContainer',
       component: FractionsContainer
+    },
+    {
+      path: '/comments',
+      name: 'Comments',
+      component: () => import('@/components/Comments')
     }
   ]
 })
